@@ -7,13 +7,10 @@ dependencies:
     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
     - sudo apt-get update
-    - sudo apt-get --only-upgrade install google-chrome-stable
     - npm install -g @testim/testim-cli
-    - npm install -g webdriver-manager
-    - webdriver-manager update
 test:
   pre:
     - mkdir -p $CIRCLE_TEST_REPORTS/testim/
     - nohup bash -c "webdriver-manager start 2>&1 &"
   override:
-    - testim --project "8wWvzEjc" --label "basicTest" --host "127.0.0.1" --port 4444 --token "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjowLCJkIjp7InVpZCI6ImNpOjh3V3Z6RWpjIiwiZW1haWwiOiJwY3Jpc3RvbEBrYWxpb3AuY29tIn0sImlhdCI6MTQ4ODE3NzcyNH0.9NxEb00HGG3qCHFgs6an9RBoRkxsM-23XhZKvUdsPbU" --report-file $CIRCLE_TEST_REPORTS/testim/results.xml
+    - docker run --rm --name testim_container -v /home/pcristol/workspace/testim:/var/ -i -t testim/docker-cli:latest --project "8wWvzEjc" --browserstack-user kaliop1 --browserstack-key YyXjVHJ6LPSszsVzymrH --host hub-cloud.browserstack.com --port 80 --browserstack-options /var/browserstackConf.json --token "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjowLCJkIjp7InVpZCI6ImNpOjh3V3Z6RWpjIiwiZW1haWwiOiJwY3Jpc3RvbEBrYWxpb3AuY29tIn0sImlhdCI6MTQ4ODE3NzcyNH0.9NxEb00HGG3qCHFgs6an9RBoRkxsM-23XhZKvUdsPbU"  --label basicTest
