@@ -13,6 +13,5 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/testim/
     - nohup bash -c "webdriver-manager start 2>&1 &"
   override:
-    - npm i -g @testim/testim-cli && testim --token "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjowLCJkIjp7InVpZCI6ImNpOjh3V3Z6RWpjIiwiZW1haWwiOiJwY3Jpc3RvbEBrYWxpb3AuY29tIn0sImlhdCI6MTQ4ODE3NzcyNH0.9NxEb00HGG3qCHFgs6an9RBoRkxsM-23XhZKvUdsPbU" --project "8wWvzEjc"
---browserstack-user "kaliop1" --browserstack-key "YyXjVHJ6LPSszsVzymrH" --host "hub-cloud.browserstack.com" --port 80 --label "basicTest"
+    - npm i -g @testim/testim-cli && testim --token "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjowLCJkIjp7InVpZCI6ImNpOjh3V3Z6RWpjIiwiZW1haWwiOiJwY3Jpc3RvbEBrYWxpb3AuY29tIn0sImlhdCI6MTQ4ODE3NzcyNH0.9NxEb00HGG3qCHFgs6an9RBoRkxsM-23XhZKvUdsPbU" --project "8wWvzEjc" --browserstack-user "kaliop1" --browserstack-key "YyXjVHJ6LPSszsVzymrH" --host "hub-cloud.browserstack.com" --port 80 --label "basicTest"
 
